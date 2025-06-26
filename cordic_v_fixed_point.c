@@ -17,18 +17,19 @@ void cordic_v_fixed_point(int32_t *p_x, int32_t *p_y, int32_t *p_z)
 
     for( i=0; i<CORDIC_NUM_ITERATIONS; i++) 
     { 
-	if( y_temp_1 > 0) 
+	    if( y_temp_1 > 0) 
         {
-	    x_temp_2 = x_temp_1 + (y_temp_1 >> i);
-	    y_temp_2 = y_temp_1 - (x_temp_1 >> i);
-	    z_temp += cordic_z_table[i];
+	        x_temp_2 = x_temp_1 + (y_temp_1 >> i);
+	        y_temp_2 = y_temp_1 - (x_temp_1 >> i);
+	        z_temp += cordic_z_table[i];
         }
         else 
         {
-	    x_temp_2 = x_temp_1 - (y_temp_1 >> i);
-	    y_temp_2 = y_temp_1 + (x_temp_1 >> i);
-	    z_temp -= cordic_z_table[i];
+	        x_temp_2 = x_temp_1 - (y_temp_1 >> i);
+	        y_temp_2 = y_temp_1 + (x_temp_1 >> i);
+	        z_temp -= cordic_z_table[i];
         }
+        
         x_temp_1 = x_temp_2;
         y_temp_1 = y_temp_2;
     }

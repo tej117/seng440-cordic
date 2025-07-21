@@ -26,8 +26,8 @@ int main(void) {
     double total_time = 0.0;
 
     for (int i = 0; i < NUM_RUNS; i++) {
-        int32_t x = 27852;  // ≈ 0.85 in Q1.15
-        int32_t y = 24903;  // ≈ 0.76 in Q1.15
+        int32_t x = (int32_t)(0.85 * (1 << 13)); // Q2.13
+        int32_t y = (int32_t)(0.85 * (1 << 13)); // Q2.13
         int32_t z = 0;
 
         double start = get_time_ms();

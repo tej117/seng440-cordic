@@ -3,16 +3,23 @@
 
 #include "cordic.h"
 
+/*
+Applied Q2.13 format: (atan(2^-i) * 2^13) to the following table.
+
 const int16_t cordic_z_table[15] = { 25735, 15192, 8027, 4074, 2045, 1023,
 511, 255, 127, 63, 31, 15, 7, 3, 1};
+*/
+
+const int16_t cordic_z_table[15] = { 6433, 3218, 1634, 820, 410, 205, 102, 51, 26, 13, 6, 3, 1, 1, 0};
 
 #define CORDIC_NUM_ITERATIONS 15 // 15 iterations are needed
 
 void cordic_v_fixed_point(int32_t *p_x, int32_t *p_y, int32_t *p_z)
 {
-    int x_temp_1, y_temp_1, z_temp;
-    int x_temp_2, y_temp_2;
-    int i;
+    int32_t x_temp_1, y_temp_1, z_temp;
+    int32_t x_temp_2, y_temp_2;
+
+    register i;
     x_temp_1 = *p_x;
     y_temp_1 = *p_y;
     z_temp = 0;

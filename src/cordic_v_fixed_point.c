@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
 
-static const int16_t cordic_z_table[15] = { 25735, 15192, 8027, 4074, 2045, 1023,
+#include "cordic.h"
+
+const int16_t cordic_z_table[15] = { 25735, 15192, 8027, 4074, 2045, 1023,
 511, 255, 127, 63, 31, 15, 7, 3, 1};
 
 #define CORDIC_NUM_ITERATIONS 15 // 15 iterations are needed

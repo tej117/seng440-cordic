@@ -12,7 +12,7 @@ const int16_t cordic_z_table[15] = { 25735, 15192, 8027, 4074, 2045, 1023,
 511, 255, 127, 63, 31, 15, 7, 3, 1};
 */
 
-const int16_t cordic_z_table[15] = { 6433, 3218, 1634, 820, 410, 205, 102, 51, 26, 13, 6, 3, 1, 1, 0};
+const int16_t cordic_z_table[15] = { 6433, 3218, 1634, 820, 410, 205, 102, 51, 26, 13, 6, 3, 1, 1, 0 };
 
 #define CORDIC_NUM_ITERATIONS 15 // 15 iterations are needed
 
@@ -26,6 +26,23 @@ void cordic_v_fixed_point(int32_t *p_x, int32_t *p_y, int32_t *p_z)
     y_temp_1 = *p_y;
     z_temp = 0;
 
+
+    // Iteration 0
+    if( y_temp_1 > 0) 
+        {
+            x_temp_2 = x_temp_1 + (y_temp_1 >> 0);
+            y_temp_2 = y_temp_1 - (x_temp_1 >> 0);
+            z_temp += cordic_z_table[0];
+        }
+        else 
+        {
+            x_temp_2 = x_temp_1 - (y_temp_1 >> 0);
+            y_temp_2 = y_temp_1 + (x_temp_1 >> 0);
+            z_temp -= cordic_z_table[0];
+        }
+        
+    x_temp_1 = x_temp_2;
+    y_temp_1 = y_temp_2;
 
     // Iteration 1
     if( y_temp_1 > 0) 
@@ -260,23 +277,6 @@ void cordic_v_fixed_point(int32_t *p_x, int32_t *p_y, int32_t *p_z)
             x_temp_2 = x_temp_1 - (y_temp_1 >> 14);
             y_temp_2 = y_temp_1 + (x_temp_1 >> 14);
             z_temp -= cordic_z_table[14];
-        }
-        
-    x_temp_1 = x_temp_2;
-    y_temp_1 = y_temp_2;
-
-    // Iteration 15
-    if( y_temp_1 > 0) 
-        {
-            x_temp_2 = x_temp_1 + (y_temp_1 >> 15);
-            y_temp_2 = y_temp_1 - (x_temp_1 >> 15);
-            z_temp += cordic_z_table[15];
-        }
-        else 
-        {
-            x_temp_2 = x_temp_1 - (y_temp_1 >> 15);
-            y_temp_2 = y_temp_1 + (x_temp_1 >> 15);
-            z_temp -= cordic_z_table[15];
         }
         
     x_temp_1 = x_temp_2;

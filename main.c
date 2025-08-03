@@ -45,7 +45,7 @@ void execute_cordic_vector_fixed_point() {
 void execute_horizontal_firmware_simulation() {
     RegisterFile regs = {
         .x = (int32_t)(0.85 * (1 << 13)), // Q2.13
-        .y = (int32_t)(0.85 * (1 << 13)),
+        .y = (int32_t)(0.76 * (1 << 13)),
         .z = 0
     };
 
@@ -60,7 +60,7 @@ int main( void)
     execute_cordic_vector_fixed_point();
 
 
-    // execute_horizontal_firmware_simulation();
+    execute_horizontal_firmware_simulation();
     
     return 0;
 } /** END of main() function */

@@ -78,11 +78,6 @@ begin
                     y <= y + x_shift;
                     z <= z - resize(table_val, 16);
                 end if;
-
-                -- TEMP: Debugging the differences between software
-                report "x: " & integer'image(to_integer(x));
-                report "y: " & integer'image(to_integer(y));
-                report "z: " & integer'image(to_integer(z));
             end if;
         end if;
     end process;

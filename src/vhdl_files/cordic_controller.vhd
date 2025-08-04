@@ -51,7 +51,9 @@ begin
                         end if;
 
                     when DONE =>
-                        state <= IDLE;
+                        if start_flag = '0' then
+                            state <= IDLE;
+                        end if;
                 end case;
             end if;
         end if;

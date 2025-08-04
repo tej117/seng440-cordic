@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.math_real.all;
+use std.env.all;
 
 entity cordic_tb is
 end cordic_tb;
@@ -115,6 +116,8 @@ begin
         report "Input vector modulus (float) = " & real'image(modulus_init);
         report "Output vector modulus (float) = " & real'image(modulus_out);
 
+        report "Test completed. Stopping simulation.";
+        std.env.stop;
         wait;
     end process;
 

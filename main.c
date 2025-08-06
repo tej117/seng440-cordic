@@ -84,6 +84,7 @@ int main( void)
 
     execute_horizontal_firmware_simulation();
 
+    
     execute_inline();
 
     return 0;

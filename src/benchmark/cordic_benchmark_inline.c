@@ -33,11 +33,7 @@ int main(void) {
 
         double start = get_time_ms();
         
-        uint64_t packed_result = cordic_custom_instruction(x, y);
-
-        int16_t out_z = (packed_result >> 32) & 0xFFFF;
-        int16_t out_y = (packed_result >> 16) & 0xFFFF;
-        int16_t out_x = packed_result & 0xFFFF;
+        cordic_custom_instruction(x, y);
 
         double end = get_time_ms();
 

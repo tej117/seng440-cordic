@@ -7,7 +7,6 @@ The purpose of this project is to gain a strong understanding of embedded-level 
 
 When looking at `src\` it has cordic_v_fixed_point.c which is the most optimized software version of CORDIC. And when going into `src\raw_files\`, these files contain other optimization versions (and the baseline version) which were tested and benchmarked to find the most optimal solution.
 
-# Project Specifications
+`src\vhdl_files` contains the design of CORDIC in VHDL.
 
-The list below describes the design specifications of our codebase:
-(Include bullet point list here from Report Document)
+`src\benchmark` contains the benchmark files that were used to test performance of the different optimization levels for CORDIC.

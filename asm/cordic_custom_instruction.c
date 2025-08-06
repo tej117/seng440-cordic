@@ -22,7 +22,7 @@ uint64_t cordic_custom_instruction(int x, int y) {
         "blt loop_neg\n\t"
 
         "loop_zero:\n\t"
-        "b loop_neg\n\t"  // or b loop_pos, depending on your logic
+        "b loop_neg\n\t" 
 
         "loop_neg:\n\t"
         "asr w4, w11, w3\n\t"

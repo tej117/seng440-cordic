@@ -29,13 +29,13 @@ clean:
 	rm -f $(OBJS) $(TARGETS) cordic_benchmark cordic_benchmark_firmware cordic_benchmark_inline
 
 # Benchmark - Software CORDIC
-benchmark: cordic_benchmark.c src/cordic_v_fixed_point.c
-	$(CC) $(CFLAGS) -o cordic_benchmark cordic_benchmark.c src/cordic_v_fixed_point.c $(LDFLAGS)
+benchmark: src/benchmark/cordic_benchmark.c src/cordic_v_fixed_point.c
+	$(CC) $(CFLAGS) -o cordic_benchmark src/benchmark/cordic_benchmark.c src/cordic_v_fixed_point.c $(LDFLAGS)
 
 # Benchmark - Firmware CORDIC
-benchmark_firmware: cordic_benchmark_firmware.c src/horizontal_firmware_simulation.c
-	$(CC) $(CFLAGS) -o cordic_benchmark_firmware cordic_benchmark_firmware.c src/horizontal_firmware_simulation.c $(LDFLAGS)
+benchmark_firmware: src/benchmark/cordic_benchmark_firmware.c src/horizontal_firmware_simulation.c
+	$(CC) $(CFLAGS) -o cordic_benchmark_firmware src/benchmark/cordic_benchmark_firmware.c src/horizontal_firmware_simulation.c $(LDFLAGS)
 
 # Benchmark - ASM CORDIC
-cordic_benchmark_inline: cordic_benchmark_inline.c $(ASM_CORDIC)
-	$(CC) $(CFLAGS) -o $@ cordic_benchmark_inline.c $(ASM_CORDIC) $(LDFLAGS)
+cordic_benchmark_inline: src/benchmark/cordic_benchmark_inline.c $(ASM_CORDIC)
+	$(CC) $(CFLAGS) -o $@ cordic_benchmark_inline src/benchmark/cordic_benchmark_inline.c $(ASM_CORDIC) $(LDFLAGS)
